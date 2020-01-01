@@ -1,5 +1,11 @@
 ## Management System
 
+## Uploading vscode code to github 
+CHANGES + => commit massage + V 
+=> git remote add origin https://github.com/kimja7045/React-Management-Tutorial.git
+=> git push --set-upstream origin master
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
