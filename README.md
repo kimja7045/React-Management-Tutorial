@@ -1,12 +1,12 @@
 ## Management System
+~chap5
+본 프로젝트는 React 고객 관리 시스템(Client Management System)입니다. 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Uploading vscode code to github 
 CHANGES + => commit massage + V 
-=> git remote add origin https://github.com/kimja7045/React-Management-Tutorial.git
+=> git remote add origin https://github.com/kimja7045/React-Management-Tutorial.git <br/>
 => git push --set-upstream origin master
-
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
