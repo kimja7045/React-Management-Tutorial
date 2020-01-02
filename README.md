@@ -1,5 +1,5 @@
 ## Management System
-~chap6, Material UI, TableRow<br/>
+~chap6, Material UI, Table, styleApply, Paper<br/>
 본 프로젝트는 React 고객 관리 시스템(Client Management System)입니다.<br>
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
