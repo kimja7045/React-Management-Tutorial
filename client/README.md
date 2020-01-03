@@ -3,10 +3,11 @@
 본 프로젝트는 React 고객 관리 시스템(Client Management System)입니다.<br>
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## nodemon Installation
+npm install -g nodemon body-parser express => node server.js 로 시작
+
 ## Material UI Installation
 npm install @material-ui/core
-
-
 
 ## First Uploading vscode code to github 
 CHANGES + + 
