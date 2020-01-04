@@ -21,34 +21,28 @@ const styles = theme => ({
   table: {
     minWidth: 1080 //최소 1080px 이상을 유지, 이로 인해 가로 스크롤바가 생성
   }
-})
+});
 
-const customers = [
-  {
-    'id': 1,
-    'image': 'https://placeimg.com/64/64/any', // 이미지 크기=64*64
-    'name': '김재훈',
-    'birthday': '950201',
-    'gender': '남자',
-    'job': '대학생'
-  },
-  {
-    'id': 2,
-    'image': 'https://placeimg.com/64/64/any', // 이미지 크기=64*64
-    'name': '홍길동',
-    'birthday': '960201',
-    'gender': '남자',
-    'job': '개발자'
-  }, {
-    'id': 3,
-    'image': 'https://placeimg.com/64/64/any', // 이미지 크기=64*64
-    'name': '이순신',
-    'birthday': '130201',
-    'gender': '남자',
-    'job': '장군'
-  },
-]
+
+
 class App extends Component {
+
+  state={
+    customers:""
+  }
+
+  componentDidMount(){
+    this.callApi()
+    .then(res=>this.setState({customers:res}))
+    .catch(err=>console.log(err));
+  }
+
+  // 비동기적으로 내용을 수행할 수 있도록
+  callApi=async()=>{
+    const response =await fetch('/api/customers'); //접속하고자 하는 주소를 넣기, 지금은 테스트하기위한 목적으로 
+    const body=await response.json(); // 고객목록이 json 형태로 출력되면 그것을 body변수에 담음 
+    return body;
+  }
   render() {
     const { classes } = this.props;
     return (
@@ -66,7 +60,7 @@ class App extends Component {
           </TableHead>
           <TableBody>
             {
-              customers.map(c => {
+             this.state.customers? this.state.customers.map(c => {
                 return (
                   <Customer
                     key={c.id}
@@ -79,7 +73,7 @@ class App extends Component {
                   />
                 );
               })
-            }
+            :""}
           </TableBody>
         </Table>
       </Paper>
