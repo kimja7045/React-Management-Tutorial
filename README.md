@@ -1,5 +1,5 @@
 ## Management System
-~Chap9, Simple life cycle, Progress bar, customer api loading <br/>
+~Chap11, mysql <br/>
 본 프로젝트는 React 고객 관리 시스템(Client Management System)입니다.<br>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -9,6 +9,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ,props는 변경할 수 없는 데이터를 명시할 때 사용
 
 npm install -g react-scripts
+
+## mysql library installation
+npm install --save mysql
 
 ## to run npm run dev()
 npm install concurrently -g
