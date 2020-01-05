@@ -10,6 +10,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableBody from '@material-ui/core/TableBody'; //각각의 고객에 대한 정보를 등록
 import TableRow from '@material-ui/core/TableRow'; //각각의 고객에 대한 정보를 등록
 import TableCell from '@material-ui/core/TableCell'; //각각의 고객에 대한 정보를 등록
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
@@ -20,6 +21,9 @@ const styles = theme => ({
   },
   table: {
     minWidth: 1080 //최소 1080px 이상을 유지, 이로 인해 가로 스크롤바가 생성
+  },
+  progress:{
+    margin:theme.spacing.unit*2 //위쪽으로
   }
 });
 
@@ -28,10 +32,12 @@ const styles = theme => ({
 class App extends Component {
 
   state={
-    customers:""
+    customers:"",
+    completed:0  // progress bar에 사용
   }
 
   componentDidMount(){
+    this.timer=setInterval(this.progress,20); //0.02초마다 progress함수가 실행
     this.callApi()
     .then(res=>this.setState({customers:res}))
     .catch(err=>console.log(err));
@@ -43,6 +49,12 @@ class App extends Component {
     const body=await response.json(); // 고객목록이 json 형태로 출력되면 그것을 body변수에 담음 
     return body;
   }
+  
+progress=()=>{
+  const{completed}=this.state;
+  this.setState({completed:completed>=100?0:completed+1});
+}
+
   render() {
     const { classes } = this.props;
     return (
@@ -73,7 +85,14 @@ class App extends Component {
                   />
                 );
               })
-            :""}
+            :
+            <TableRow>
+              
+              <TableCell colSpan="6" align="center"> 
+                <CircularProgress className={classes.progress} variant="determinate" 
+                value={this.state.completed}/>
+              </TableCell>
+              </TableRow>}
           </TableBody>
         </Table>
       </Paper>
