@@ -19,6 +19,7 @@ class CustomerAdd extends React.Component {
         e.preventDefault()  // 데이터가 서버로 전달됨에 있어서 오류가 발생하지 않도록 하나의 함수를 불러옴 
         this.addCustomer().then((response) => { // 서버로부터 res가 왔을 때 건너 온 데이터를 콘솔창에 출력
             console.log(response.data);
+            this.props.stateRefresh(); // 비동기적인 수행이라 순서를 보장하지 못함
         });
         this.setState({
             file: null, 
@@ -28,7 +29,6 @@ class CustomerAdd extends React.Component {
             job: '',
             fileName: '' 
         });
-        window.location.reload();
     }
 
     handleFileChange = (e) => {
