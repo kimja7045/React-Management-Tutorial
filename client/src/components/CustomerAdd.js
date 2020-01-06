@@ -20,6 +20,15 @@ class CustomerAdd extends React.Component {
         this.addCustomer().then((response) => { // 서버로부터 res가 왔을 때 건너 온 데이터를 콘솔창에 출력
             console.log(response.data);
         });
+        this.setState({
+            file: null, 
+            userName: '',
+            birthday: '',
+            gender: '',
+            job: '',
+            fileName: '' 
+        });
+        window.location.reload();
     }
 
     handleFileChange = (e) => {

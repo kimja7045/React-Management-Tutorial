@@ -1,8 +1,12 @@
 ## Management System
-~Chap12, add customers form, event handling, axios <br/>
+insert DB, multer, chap13<br/>
 본 프로젝트는 React 고객 관리 시스템(Client Management System)입니다.<br>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+# multer installation
+파일처리 라이브러리
+npm install --save multer
 
 ## axios installation
 axios(엑시오스) - 서버와의 통신 목적의 라이브러리
