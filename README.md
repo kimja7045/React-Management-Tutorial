@@ -1,17 +1,21 @@
 ## Management System
-~Chap11, mysql <br/>
+~Chap12, add customers form, event handling, axios <br/>
 본 프로젝트는 React 고객 관리 시스템(Client Management System)입니다.<br>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## axios installation
+axios(엑시오스) - 서버와의 통신 목적의 라이브러리
+npm install --save axios
+
+## mysql library installation
+npm install --save mysql
 
 ## etc
 일반적으로 리액트에서는 비동기 통신을 이용해서 서버에 접근하여 데이터를 가져오도록 코딩
 ,props는 변경할 수 없는 데이터를 명시할 때 사용
 
 npm install -g react-scripts
-
-## mysql library installation
-npm install --save mysql
 
 ## to run npm run dev()
 npm install concurrently -g
