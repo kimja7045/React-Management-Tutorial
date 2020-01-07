@@ -25,7 +25,7 @@ const upload=multer({dest:'./upload'}); // upload폴더에 사용자의 파일�
 
 app.get('/api/customers',(req,res)=>{
     connection.query(
-      "select * from customer",
+      "select * from customer where isDeleted=0",
       (err,rows,fields)=>{ // 모든 고객 데이터가 포함되어있는 rows 변수를
         if(err) throw err;
         res.send(rows);    // 그대로 사용자에게 보여줄 수 있도록
@@ -37,7 +37,7 @@ app.use('/image',express.static('./upload')); //사용자가 접근해서 확인
 //이미지 경로로 접근하는데 우리의 실제 upload 폴더와 매핑? 이 됨
 
 app.post('/api/customers',upload.single('image'),(req,res)=>{
-  let sql='insert into customer values (null, ?,?,?,?,?)';
+  let sql='insert into customer values (null, ?,?,?,?,?,now(),0)';
   let image='/image/'+req.file.filename;
   let name=req.body.name;
   let birthday=req.body.birthday;
@@ -50,6 +50,16 @@ app.post('/api/customers',upload.single('image'),(req,res)=>{
       res.send(rows);
     });
 })
+
+app.delete('/api/customers/:id',(req,res)=>{
+  let sql='update customer set isDeleted=1 where id=?';
+  let params=[req.params.id];
+  connection.query(sql,params,
+      (err,rows,fields)=>{
+        res.send(rows);
+      }
+    )
+});
 
 app.listen(port,()=>console.log(`Listening on port ${port}`));
 
