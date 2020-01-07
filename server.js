@@ -18,6 +18,7 @@ const connection=mysql.createConnection({
   port:conf.port,
   database:conf.database
 });
+
 connection.connect();
 
 const multer=require('multer'); // multer 라이브러리를 불러와서 multer 객체 생성
