@@ -1,8 +1,25 @@
 ## Management System
-Material UI Modal,Dialog,Typography chap16<br/>
+Material UI App Bar, icons Library, Korean Font Apply chap17<br/>
 본 프로젝트는 React 고객 관리 시스템(Client Management System)입니다.<br>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+# Hangul(Korean) 폰트 적용
+다양한 블로그에서 기본 글씨체로 사용되는 한글 폰트
+
+import{MuiThemeProvider,createMuiTheme} from '@material-ui/core/styles';
+
+const theme=createMuiTheme({
+    typography:{
+        fontFamily:'"Noto Sans KR",serif'
+    }
+});
+
+ReactDOM.render(<MuiThemeProvider theme={theme}><App /></MuiThemeProvider>, document.getElementById('root'));
+
+# icons installation
+Material UI App Bar 사용에 필요한 icons 라이브러리
+npm install --save @material-ui/icons
 
 # multer installation
 파일처리 라이브러리
