@@ -106,14 +106,16 @@ class App extends Component {
 
     this.state = {
       customers: '',
-      completed: 0
+      completed: 0,
+      searchKeyword:''
     }
   }
 
   stateRefresh = () => {
     this.setState({
       customers: '',
-      completed: 0
+      completed: 0,
+      searchKeyword:''
     });
     this.callApi() //고객 데이터를 불러오는 부분
       .then(res => this.setState({ customers: res }))
@@ -139,7 +141,27 @@ class App extends Component {
     this.setState({ completed: completed >= 100 ? 0 : completed + 1 });
   }
 
+  // 추가,검색에 사용
+  handleValueChange=(e)=>{ // 입력값을 상태변화로 감지해서 리액트 내부에 해당 데이터를 가지고 있도록 해야
+    let nextState={};
+    nextState[e.target.name]=e.target.value;
+    this.setState(nextState);
+  }
+
   render() {
+
+    const filteredComponents=(data)=>{
+      data=data.filter((c)=>{
+        return c.name.indexOf(this.state.searchKeyword)>-1;    
+      });
+
+      return data.map((c)=>{
+        return <Customer stateRefresh={this.stateRefresh} key={c.id} id={c.id}
+                          image={c.image} name={c.name} birthday={c.birthday} 
+                          gender={c.gender} job={c.job}/>
+      })
+    }
+
     const { classes } = this.props;
     const cellList = ["번호", "프로필 이미지", "이름", "생년월일", "성별", "직업", "설정"];
     return (
@@ -168,6 +190,9 @@ class App extends Component {
                   input: classes.inputInput,
                 }}
                 inputProps={{ 'aria-label': 'search' }}
+                name="searchKeyword"
+                value={this.state.searchKeyword}
+                onChange={this.handleValueChange}
               />
             </div>
           </Toolbar>
@@ -186,21 +211,24 @@ class App extends Component {
             </TableHead>
             <TableBody>
               {
-                this.state.customers ? this.state.customers.map(c => {
-                  return (
-                    <Customer
-                      stateRefresh={this.stateRefresh}
-                      key={c.id}
-                      id={c.id}
-                      image={c.image}
-                      name={c.name}
-                      birthday={c.birthday}
-                      gender={c.gender}
-                      job={c.job}
-                    />
-                  );
-                })
-                  :
+                // this.state.customers.map(c => {
+                //   return (
+                //     <Customer
+                //       stateRefresh={this.stateRefresh}
+                //       key={c.id}
+                //       id={c.id}
+                //       image={c.image}
+                //       name={c.name}
+                //       birthday={c.birthday}
+                //       gender={c.gender}
+                //       job={c.job}
+                //     />
+                //   );
+                //}):
+
+                this.state.customers ?  
+                filteredComponents(this.state.customers)     
+                :
                   <TableRow>
                     <TableCell colSpan="6" align="center">
                       <CircularProgress className={classes.progress} variant="determinate"
