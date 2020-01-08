@@ -4,7 +4,7 @@ Material UI App Bar, icons Library, Korean Font Apply chap17<br/>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# Hangul(Korean) 폰트 적용
+# Hangul(Korean) Font Apply by Material UI
 다양한 블로그에서 기본 글씨체로 사용되는 한글 폰트
 
 import{MuiThemeProvider,createMuiTheme} from '@material-ui/core/styles';
@@ -17,16 +17,16 @@ const theme=createMuiTheme({
 
 ReactDOM.render(<MuiThemeProvider theme={theme}><App /></MuiThemeProvider>, document.getElementById('root'));
 
-# icons installation
-Material UI App Bar 사용에 필요한 icons 라이브러리
+# icons Library installation
+Material UI App Bar 사용에 필요한 icons Library
 npm install --save @material-ui/icons
 
-# multer installation
-파일처리 라이브러리
+# multer Library installation
+파일처리 Library
 npm install --save multer
 
-## axios installation
-axios(엑시오스) - 서버와의 통신 목적의 라이브러리
+## axios Library installation
+axios(엑시오스) - 서버와의 통신 목적의 Library
 npm install --save axios
 
 ## mysql library installation
